@@ -33,7 +33,7 @@ body { margin: 0; padding-bottom: 3rem; font-family: Arial; }
 
 <form id="form">
   <a href="/dashboard">Back to main page</a>
-  <input id="input" autocomplete="off" required>
+  <input id="input" autocomplete="off">
   <button id ="button">Send</button>
 </form>
 <div id="error" style="display:none; color:red; font-size:3rem; font-weight:bold;">
@@ -44,7 +44,13 @@ body { margin: 0; padding-bottom: 3rem; font-family: Arial; }
     const socket = io('http://localhost:3000/chat3');
     const input = document.getElementById('input').value;
 
+
+var form = document.getElementById("form");
+function handleForm(event) { event.preventDefault(); } 
+form.addEventListener('submit', handleForm);
+
   document.getElementById('button').addEventListener('click', function(e) {
+
     const input = document.getElementById('input');
 
     if (input.value.trim() === '') {
